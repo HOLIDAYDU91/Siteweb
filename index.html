@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeu de clics sur l'œuf</title>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+        font-family: Arial, sans-serif;
+    }
+    #egg {
+        width: 200px;
+        height: 200px;
+        cursor: pointer;
+    }
+    #counter {
+        text-align: center;
+        font-size: 24px;
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+    <div id="game-container">
+        <img id="egg" src="egg.png" alt="Image de l'œuf">
+        <div id="counter">Clics : 0</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const egg = document.getElementById('egg');
+            const counter = document.getElementById('counter');
+            let clickCount = 0;
+
+            egg.addEventListener('click', function() {
+                clickCount++;
+                counter.textContent = `Clics : ${clickCount}`;
+
+                if (clickCount >= 1000000) {
+                    counter.textContent = "Vous avez terminé le jeu";
+                    egg.style.display = 'none'; // Cacher l'œuf une fois le jeu terminé
+                }
+            });
+        });
+    </script>
+</body>
+</html>
